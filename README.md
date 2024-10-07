@@ -49,4 +49,3 @@ Aquí tienes el contenido completo que puedes copiar y pegar desde donde lo deja
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia UTU - consulta el archivo [LICENSE](LICENSE) para más detalles.
-```
