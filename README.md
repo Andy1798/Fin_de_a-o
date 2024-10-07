@@ -40,7 +40,7 @@ Aquí tienes el contenido completo que puedes copiar y pegar desde donde lo deja
 1. Accede a la aplicación desde el navegador:
    ```bash
    http://localhost:8000
-   ```
+
 2. Desde el panel principal, podrás:
    - Ver y gestionar el inventario.
    - Registrar nuevos pedidos.
