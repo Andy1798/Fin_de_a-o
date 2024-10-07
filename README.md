@@ -50,5 +50,3 @@ Aquí tienes el contenido completo que puedes copiar y pegar desde donde lo deja
 
 Este proyecto está licenciado bajo la Licencia UTU - consulta el archivo [LICENSE](LICENSE) para más detalles.
 ```
-
-Ya está listo para que lo copies y pegues directamente en tu archivo `README.md` en GitHub. ¡Espero que te sea útil!
