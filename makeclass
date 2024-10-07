@@ -1,0 +1,130 @@
+<?php 
+    include "vendor/rutex/utiles.php";
+
+    define("COLOR_WHITE"  , "\033[39m");
+    define("COLOR_GREY"   , "\033[30m");
+    define("COLOR_RED"    , "\033[31m");
+    define("COLOR_GREEN"  , "\033[32m");
+    define("COLOR_YELLOW" , "\033[33m");
+    define("COLOR_BLUE"   , "\033[34m");
+    define("COLOR_MAGENTA", "\033[35m");
+    define("COLOR_CYAN"   , "\033[36m");
+
+
+$errmsg = "*** " . COLOR_RED . "Invalid parameters. " . COLOR_GREEN . "Expected: <classType> <ClassName>" . COLOR_WHITE 
+        . "\nExample:"
+        . "\n    php " . COLOR_YELLOW . "makeclass controller <name>" . COLOR_WHITE
+        . "\n    php " . COLOR_YELLOW . "makeclass model      <name>" . COLOR_WHITE
+        . "\n    php " . COLOR_YELLOW . "makeclass frameset   <name>" . COLOR_WHITE
+        . "\n***\n";
+
+
+if (strtolower($argv[0]) != "makeclass") echo "unknown command";
+elseif (count($argv)<3)                  echo $errmsg;
+else {
+    $type      = strtolower($argv[1]);
+    $className = ucfirst($argv[2]);
+
+    $rutexCorePath = "vendor/rutex";
+
+    switch($type) {
+        case "model"       : $include  = "/Model.tpl";
+                             $fileName = "app/models/{$className}.php";
+                             createClass($className, $include, $fileName);
+                             break;
+
+        case "controller"  : $include  = "$rutexCorePath/classTemplates/Controller.tpl";
+                             $fileName = "app/controllers/{$className}Controller.php";
+                             configController($className, $rutexCorePath);
+                             createClass($className, $include, $fileName);
+                             break;
+
+        case "frameset"    : $include  = "$rutexCorePath/classTemplates/Frameset.tpl";
+                             $fileName = "app/views/$className/frameset.php";
+                             configFrameset($className, $rutexCorePath);
+                             createClass($className, $include, $fileName);
+                             break;
+
+        default            : echo $errmsg; 
+                             return;
+    }
+
+    return;
+}
+
+
+function createClass($className, $include, $fileName) {    
+    if (!is_readable($include)) die("template no encontrado $include");
+
+    if (file_exists($fileName)) die(COLOR_RED . "CLASS NOT CREATED. " . COLOR_WHITE . $fileName . " already exist");
+    else {
+
+        //Crea el script de la clase
+        ob_start();
+        $title = "<?= \$title ?>";
+        include $include;
+        $src = ob_get_clean();
+
+        $fp = fopen($fileName, "w");
+        fwrite($fp, "<?php\n");
+        fwrite($fp, $src);
+        fclose($fp);
+
+        echo "***\n" . COLOR_YELLOW . $fileName . COLOR_GREEN . " created Ok." . COLOR_WHITE . "\n***";
+    }
+    return;
+}
+
+function configController($className, $rutexCorePath) {
+    $folder   = "app/views/" . strtolower($className);
+    $fileName = "$folder/index.php";
+    if (file_exists($fileName)) return;
+
+    if (!file_exists($folder)) mkdir($folder, 0777, true);
+
+    ob_start();
+    $title = "<?= \$title ?>";
+    include "$rutexCorePath/classTemplates/index.php";
+    $src = ob_get_clean();
+
+    $fp = fopen($fileName, "w");
+    fwrite($fp, $src);
+    fclose($fp);
+
+    //Actualizar web.php
+    $fileName  = "app/web.php";
+    $use       = "use app\controllers\\{$className}Controller;\n";
+    $ruta      = "Route::get(\"/" . strtolower($className) . "\", [{$className}Controller::class, \"index\"]);\n";
+
+    $lines    = file($fileName);
+    $inuse    = false;
+    $outlines = Null;
+    foreach ($lines as $line) {
+        if (str_starts_with($line, 'use')) $inuse = true;
+        elseif ($inuse) {
+            $inuse = false;
+            $outlines[] = $use;
+        }
+        $outlines[] = $line;
+    }
+    $outlines[] = $ruta;
+    
+    file_put_contents($fileName, $outlines);
+}
+
+function configFrameset($className, $rutexCorePath) {
+    $folder = "app/views/$className";
+
+    if (file_exists($folder)) die(COLOR_RED . "FRAMESET NOT CREATED. " . COLOR_WHITE . $folder . " already exist");
+    else {
+        mkdir($folder, 0777, true);
+        copyFiles("$rutexCorePath/frames", $folder);
+
+        //add Route
+        $fileName  = "app/web.php";
+        $routeEntry= "Route::frameset(\"/$className\");\n";
+    
+        file_put_contents($fileName, file_get_contents($fileName) . "\n$routeEntry");
+    }
+}
+
