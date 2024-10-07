@@ -21,8 +21,6 @@ RutaMT es una aplicación web diseñada para gestionar el control de stock y la 
 1. Clona este repositorio:
    ```bash
    git clone https://github.com/usuario/RutaMT.git
-Aquí tienes el contenido completo que puedes copiar y pegar desde donde lo dejaste:
-
 ```markdown
 2. Accede al directorio del proyecto:
    ```bash
