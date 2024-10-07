@@ -1,0 +1,96 @@
+:root {
+    --primary: #283E81;
+    --secondary: #E0DFF2;
+    --bg-color: #3B62D9;
+    --ad-color: #718BD9;
+    --link: #F21D2F;
+}
+
+/* Estilo para el slider */
+.swiper-container {
+    width: 100%;
+    /* Ocupar todo el ancho de la pantalla */
+    height: 70vh;
+    /* Altura del slider */
+margin-top:34px;
+    overflow: hidden;
+    position: relative;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    height: 100%;
+}
+
+.swiper-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+.swiper-slide img,
+.swiper-slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Asegura que las imágenes y videos ocupen todo el espacio sin perder proporción */
+}
+
+/* Flechas de navegación */
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 48px;
+    outline: none;
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.swiper-button-prev {
+    left: 20px;
+}
+
+.swiper-button-next {
+    right: 20px;
+}
+
+/* Paginación (bullets) */
+.swiper-pagination-bullet {
+    background: rgb(255, 255, 255);
+    opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+    background: #007BFF;
+    opacity: 1;
+}
+
+/* Otros estilos específicos de la página principal */
+.page-content {
+    padding: 20px;
+    background-color: #f8f8f8;
+    color: var(--primary);
+    min-height: 100vh;
+}
+
+.page-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.page-content p {
+    line-height: 1.6;
+    color: #333;
+}
+h2{
+color:#f5f5f5;
+}
