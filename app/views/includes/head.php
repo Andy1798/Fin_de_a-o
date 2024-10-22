@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="/static/css/user_page/header.css">
     <link rel="stylesheet" href="/static/css/user_page/footer.css">
     <link rel="stylesheet" href="/static/css/user_page/product_view_catalog.css">
-
     <link rel="icon" href="../static/img/logo.ico" type="image/x-icon">
     <title><?= $title ?></title>
 </head>

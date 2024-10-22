@@ -9,6 +9,7 @@ use app\controllers\BrandController;
 use app\controllers\CatalogController;
 use app\controllers\SliderController;
 use app\controllers\AdminHomeController;
+use app\controllers\CartController;
 
 Route::get("/", [HomeController::class, "index"]);
 Route::get("/admin", "admin");
@@ -37,6 +38,8 @@ Route::post("/product/store", [ProductController::class, "store"]); // Guardar n
 Route::get("/product/edit/:id", [ProductController::class, "edit"]); // Formulario para editar producto
 Route::post("/product/update/:id", [ProductController::class, "update"]); // Actualizar producto
 Route::post("/product/delete/:id", [ProductController::class, "delete"]); // Eliminar producto
+Route::post('/product/togglePublished/:id', [ProductController::class, 'togglePublished']);
+Route::post('/product/toggleFeatured/:id', [ProductController::class, 'toggleFeatured']);
 
 // Rutas para categorías
 Route::get("/category/create", [CategoryController::class, "index"]);
@@ -58,6 +61,13 @@ Route::get('/admin/homecontrol', [AdminHomeController::class, 'homeControl']);
 Route::get('/catalog/product/:id', [CatalogController::class, 'view_product']);
 
 
+// Rutas para el carrito de compras
+Route::get('/cart', [CartController::class, 'index']);            // Ver carrito
+Route::post('/cart/add/:id', [CartController::class, 'add']);      // Añadir producto al carrito
+Route::post('/cart/update/:id', [CartController::class, 'update']); // Actualizar cantidad de producto en el carrito
+Route::post('/cart/remove/:id', [CartController::class, 'remove']); // Eliminar producto del carrito
+Route::post('/cart/clear', [CartController::class, 'clear']);       // Vaciar el carrito
+Route::post('/cart/finalize', [CartController::class, 'finalize']); // Finalizar pedido
 
 
 

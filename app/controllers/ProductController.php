@@ -23,8 +23,8 @@ class ProductController extends BaseController
         $brand = new Brand;
 
         // Obtener categorías y marcas
-        $data["categories"] = $category->findAllCategories(); 
-        $data["brands"] = $brand->findAllBrands(); 
+        $data["categories"] = $category->findAllCategories();
+        $data["brands"] = $brand->findAllBrands();
 
         $data["title"] = "Nuevo Producto";
         $data["action"] = "/product/store";
@@ -81,13 +81,13 @@ class ProductController extends BaseController
         $brand = new Brand;
 
         // Obtener categorías y marcas
-        $data["categories"] = $category->findAllCategories(); 
-        $data["brands"] = $brand->findAllBrands(); 
+        $data["categories"] = $category->findAllCategories();
+        $data["brands"] = $brand->findAllBrands();
         $data["product"] = $product->findProductById($id);
 
         if ($data["product"]) {
             $data["title"] = "Editar Producto";
-            $data["action"] = "/product/update/".$id;
+            $data["action"] = "/product/update/" . $id;
             return $this->view("products/product_form", $data);
         } else {
             $data["errmsg"] = "Producto no encontrado";
@@ -140,6 +140,67 @@ class ProductController extends BaseController
 
         $this->redirect("/product");
     }
+    public function togglePublished($params)
+{
+    $productModel = new Product;
+
+    try {
+        $productId = $params['id'] ?? null;
+        $publishedStatus = json_decode(file_get_contents("php://input"), true)['published'] ?? null;
+
+        if (!$productId || !isset($publishedStatus)) {
+            throw new \Exception("Parámetros inválidos.");
+        }
+
+        // Actualizar el estado de publicación
+        $productModel->update($productId, ['published' => $publishedStatus]);
+
+        // Si el producto se despublica, quitar el estado de "destacado"
+        if ($publishedStatus == 0) {
+            $productModel->update($productId, ['featured' => 0]);
+        }
+
+        // Responder con un mensaje JSON indicando éxito
+        echo json_encode(['success' => true]);
+    } catch (\Exception $e) {
+        // Responder con un mensaje JSON indicando error
+        echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+    }
+}
+
+
+    public function toggleFeatured($params)
+    {
+        $productModel = new Product;
+
+        try {
+            $productId = $params['id'] ?? null;
+            $input = json_decode(file_get_contents("php://input"), true);
+            $featuredStatus = $input['featured'] ?? null;
+
+            // Verificar que se recibieron correctamente los parámetros
+            if (!$productId || !isset($featuredStatus)) {
+                throw new \Exception("Parámetros inválidos.");
+            }
+
+            // Verificar si el producto está publicado
+            $product = $productModel->findProductById($productId);
+            if ($product['published'] == 0) {
+                throw new \Exception("Tienes que publicar el Producto antes de destacarlo.");
+            }
+
+            // Actualizar el estado de destacado
+            $productModel->update($productId, ['featured' => $featuredStatus]);
+
+            // Responder con un mensaje JSON indicando éxito
+            echo json_encode(['success' => true]);
+        } catch (\Exception $e) {
+            // Responder con un mensaje JSON indicando error
+            echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+        }
+    }
+
+
 
     public function delete($params)
     {

@@ -10,7 +10,7 @@ class SliderController extends BaseController
     {
         $sliderImage = new SliderImage;
         $data["sliderImages"] = $sliderImage->findAllImages(); // Ahora recupera sin orden
-        return $this->view("viewHome/slider", $data);
+        return $this->view("view_home/slider", $data);
     }
 
     public function store($data)

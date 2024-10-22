@@ -13,8 +13,9 @@ class CatalogController extends BaseController
         $categoryModel = new Category;
 
         try {
-            $products = $productModel->getAll();  // Obtener todos los productos
-            $categories = $categoryModel->getAll();  // Obtener todas las categorías
+            // Obtener solo los productos publicados
+            $products = $productModel->getAllPublished();
+            $categories = $categoryModel->getAll();
         } catch (\Exception $e) {
             $error = "Error al cargar productos y categorías: " . $e->getMessage();
             return $this->view("error", ["error" => $error]);

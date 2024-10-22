@@ -6,7 +6,6 @@
 }
 
 footer {
-    margin-top: 500px;
     background-color: #283E81;
     border-top: 3px solid var(--link);
     padding: 2rem 0;
@@ -100,8 +99,8 @@ footer .our-contact li:last-child {
     display: flex;
 }
 
-footer .our-contact li:last-child i {
-    font-size: 2rem;
+footer .our-contact li i {
+    font-size: 1.4rem;
 }
 
 footer .our-contact i {
@@ -143,10 +142,10 @@ footer .social-media {
 .brand,
 .our-contact,
 .our-services {
-    width: 231px;
+    width: 235px;
 }
 
-@media screen and (max-width:780px) {
+@media screen and (max-width:790px) {
 
     .brand,
     .our-contact,

@@ -1,4 +1,5 @@
 <?php
+
 namespace app\models;
 
 use rutex\Model;
@@ -16,9 +17,26 @@ class Product extends Model
         "price" => ["required" => true],
         "quantity" => ["required" => true],
         "image" => ["required" => true],
-        "description" => ["required" => true]
+        "description" => ["required" => true],
+        "published" => ["required" => false],
+        "featured" => ["required" => false]
     ];
 
+    public function getAllPublished()
+    {
+        return $this->where('published', '=', 1)->select()->getCursor();  // Solo productos publicados
+    }
+
+    // Método para cambiar el estado de publicación de un producto
+    public function togglePublished($id, $currentStatus)
+    {
+        // Determina el nuevo estado
+        $newStatus = $currentStatus == 1 ? 0 : 1;
+    
+        // Llama al método update con el id y el array con el campo 'published'
+        return $this->update($id, ['published' => $newStatus]);
+    }
+    
     public function findAllProducts()
     {
         $this->select("*");
@@ -47,4 +65,8 @@ class Product extends Model
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function getFeaturedProducts() {
+        return $this->where('featured', '=', 1)->select()->getCursor();  // Solo productos destacados
+    }
+    
 }

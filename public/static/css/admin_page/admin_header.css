@@ -11,9 +11,11 @@ body, html {
     align-items: center;
     background-color: #003366;
     color: white;
-    padding: 10px 20px;
+    padding: 20px 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: relative; /* Para la línea horizontal */
+    position: sticky; 
+    top: 0px;
+    z-index: 1001;
 }
 
 .top-nav::after { /* Línea separadora horizontal */
@@ -36,6 +38,7 @@ body, html {
     text-decoration: none;
     margin-left: 30px;
     padding: 10px 0;
+    
 }
 
 .user-info {
@@ -76,12 +79,12 @@ body, html {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #333;
+    background-color: #ffffff;
     color: white;
     position: fixed;
     transition: width 0.3s;
     padding-top: 60px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.2);
     border-right: 1px solid #666;
     animation: 0.5s ease-out 0s 1 slideInFromLeft;
 }
@@ -116,11 +119,12 @@ body, html {
 
 .menu li {
     padding: 20px 0;
-    border-top: 1px solid #444;
+    border-top: 1px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .menu a {
-    color: white;
+    color: rgb(3, 38, 236);
     text-decoration: none;
     display: block;
     padding: 10px 20px;
@@ -128,7 +132,7 @@ body, html {
 }
 
 .menu a:hover {
-    background-color: #555;
+    background-color: #c74a4a;
 }
 
 .menu span {

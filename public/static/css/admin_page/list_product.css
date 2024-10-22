@@ -1,50 +1,262 @@
-body { 
-    font-family: Arial, sans-serif; 
-    margin: 0; 
-    padding: 0; 
+body {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
-table { 
-    width: 100%; 
-    border-collapse: collapse; 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-th, td { 
-    padding: 8px; 
-    text-align: left; 
-    border-bottom: 1px solid #ddd; 
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    max-width: 300px;
+    margin-left: 20px; /* Alineado a la izquierda */
 }
 
-th { 
-    background-color: #4CAF50; 
+.search-box {
+    padding: 10px 20px 10px 40px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.search-box:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.search-container i {
+    position: absolute;
+    left: 10px;
+    color: #888;
+    font-size: 18px;
+}
+
+.btn-add {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #007bff;
     color: white;
 }
 
-.btn { 
-    padding: 8px 16px; 
-    text-decoration: none; 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
+th, td {
+    padding: 12px;
+    text-align: left;
 }
 
-.btn-edit { 
-    background-color: #e7e700; 
+th {
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.btn-delete { 
-    background-color: #f44336; 
-}
-
-.btn-add { 
-    background-color: #4CAF50; 
-    margin-bottom: 10px; 
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
 
 
-img {
-    width: 90px;
-    height: auto;
+
+
+td img {
+    border-radius: 5px;
+}
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+/* Switch Toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Switch Toggle para "Destacar" */
+.switch-featured {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch-featured input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider-featured {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider-featured:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider-featured {
+    background-color: #ffa500; /* Color diferente para indicar que está destacado */
+}
+
+input:checked + .slider-featured:before {
+    transform: translateX(26px);
+}
+
+
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    td {
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+    }
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.option-btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option-btn i {
+    font-size: 18px;
+}
+
+.option-btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-5px);
 }

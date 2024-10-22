@@ -20,8 +20,8 @@
             </div>
             <div class="content-header">
                 <ul class="links">
-                    <li><a href="/"><i class="fa-solid fa-house"></i>&nbsp;INICIO</a></li>
-                    <li><a href="/catalog"><i class="fa-solid fa-book"></i>&nbsp;CATALOGO</a></li>
+                <li><a href="/"><i class="fa-solid fa-house"></i>&nbsp;INICIO</a></li>
+                    <li><a href="/catalog"><i class="fa-solid fa-book"></i>&nbsp;CATÁLOGO</a></li>
                     <li><a href="/orderUser"><i class="fa-solid fa-book"></i>&nbsp;MIS ORDENES</a></li>
                     <li class="login user-menu-container"> 
                         <?php if (isset($_SESSION["userLogged"])): ?>

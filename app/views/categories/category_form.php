@@ -1,26 +1,32 @@
+
 <?php require_once __DIR__ . '/../includes/restrict.php'; ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $title ?></title>
+    <title>Agregar Categoría</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/static/css/admin_page/category_form.css">
 </head>
 
 <body>
+    <div class="form-container">
+        <a href="/product" class="back-arrow">
+            <i class="fas fa-long-arrow-alt-left"></i> Volver
+        </a>
+        <h1>Agregar Categoría</h1>
+        <form action="/category/store" method="POST">
+            <div class="form-group">
+                <label for="name">Nombre de la Categoría</label>
+                <input type="text" name="name" id="name" required>
+            </div>
+            <button type="submit" class="submit-btn"><i class="fas fa-save"></i> Guardar Categoría</button>
+        </form>
+    </div>
 
-    <form action="/category/store" method="POST">
-        <label for="name">Nueva Categoría:</label>
-        <div class="form-row">
-            <input type="text" name="name" id="name" required>
-            <button type="submit">Guardar</button>
-            
-        </div>
-    </form>
- 
     <script src="/static/js/admin_page/category_form.js"></script>
 </body>
 
