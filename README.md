@@ -13,7 +13,7 @@ RutaMT es una aplicación web diseñada para gestionar el control de stock y la 
 
 - **Backend:** PHP, MySQL
 - **Frontend:** HTML, CSS, JavaScript
-- **Frameworks/Librerías:** Bootstrap (para diseño responsivo), jQuery (para interacciones dinámicas)
+- **Frameworks/Librerías:** Bootstrap , jQuery.
 - **Control de Versiones:** Git, GitHub
 
 ## Instalación
