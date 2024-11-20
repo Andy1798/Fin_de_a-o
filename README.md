@@ -45,4 +45,4 @@ RutaMT es una aplicación web diseñada para gestionar el control de stock y la 
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia UTU - consulta el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto está licenciado bajo la Licencia CCMG - consulta el archivo [LICENSE](LICENSE) para más detalles.
