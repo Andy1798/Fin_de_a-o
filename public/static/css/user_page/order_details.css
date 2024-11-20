@@ -1,0 +1,146 @@
+/* Título */
+h2 {
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Tabla de detalles de la orden */
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    /* Bordes redondeados */
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+    background-color: #283E81;
+    color: #fff;
+}
+
+table th,
+table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    font-weight: bold;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Pie de tabla */
+tfoot {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+tfoot td {
+    border-top: 2px solid #283E81;
+    padding-top: 10px;
+    font-size: 1.2em;
+    /* Tamaño de fuente más grande */
+    text-align: center;
+    /* Centrar texto en las celdas del tfoot */
+}
+
+/* Eliminamos o comentamos esta regla para evitar que alinee a la derecha */
+/* tfoot tr td:first-child {
+    text-align: right;
+} */
+
+/* Si necesitas alinear otros elementos a la derecha, puedes usar una clase específica en esos <td> */
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        /* Evita el desbordamiento horizontal */
+    }
+
+    table thead {
+        display: none;
+    }
+
+    table,
+    table tbody,
+    table tfoot,
+    table tr,
+    table tbody tr,
+    table tfoot tr {
+        display: block;
+        width: 100%;
+    }
+
+    table tr,
+    table tbody tr,
+    table tfoot tr {
+        margin-bottom: 15px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    table td,
+    table tbody td,
+    table tfoot td {
+        display: block;
+        width: 100%;
+        text-align: center;
+        /* Centrar texto en celdas en móvil */
+        padding: 10px 15px;
+        position: relative;
+    }
+
+    table td::before,
+    table tbody td::before,
+    table tfoot td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #4a4a4a;
+    }
+
+    /* Ajustes específicos para el tfoot */
+    tfoot tr td {
+        background-color: #f1f1f1;
+        font-size: 1.2em;
+        border: none;
+    }
+}
+
+/* Estilo del contenedor del botón */
+.back-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo del botón */
+.back-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;
+    background-color: #283E81;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background-color: #1d2f63;
+}

@@ -1,0 +1,360 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de Búsqueda */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    max-width: 300px;
+    margin-left: 20px;
+}
+
+.search-box {
+    padding: 10px 20px 10px 40px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.search-box:focus {
+    border-color: #283E81;
+    outline: none;
+}
+
+.search-container i {
+    position: absolute;
+    left: 10px;
+    color: #888;
+    font-size: 18px;
+}
+/* Contenedor de Acciones */
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+/* Ajusta el tamaño del buscador */
+.actions-container .search-container {
+    flex: 1 1 auto;
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+/* Ajusta las opciones */
+.actions-container .options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.actions-container .option-btn {
+    margin-bottom: 0;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .actions-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .actions-container .search-container {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .actions-container .options {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .actions-container .option-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Botones de Opciones */
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.option-btn {
+    background-color: #283E81;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.option-btn i {
+    font-size: 18px;
+}
+
+.option-btn:hover {
+    background-color: #1d2f63;
+    transform: translateY(-5px);
+}
+
+/* Estilos de la Tabla */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-table thead {
+    background-color: #283E81;
+    color: white;
+}
+
+.product-table th,
+.product-table td {
+    padding: 12px;
+    text-align: left;
+}
+
+.product-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.product-table td img {
+    border-radius: 5px;
+    max-width: 80px;
+    height: auto;
+}
+
+/* Botones de Acción */
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete {
+    background-color: #F21D2F;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Switch Toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Overlay de carga */
+#loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsividad */
+
+
+@media (max-width: 1500px) {
+    /* Ajustes para la tabla en dispositivos pequeños */
+    .product-table,
+    .product-table thead,
+    .product-table tbody,
+    .product-table th,
+    .product-table td,
+    .product-table tr {
+        display: block;
+    }
+
+    .product-table tr {
+        margin-bottom: 15px;
+    }
+
+    .product-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        white-space: normal;
+    }
+
+    .product-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .product-table th {
+        display: none;
+    }
+
+    .product-table td img {
+        max-width: 80px;
+        height: auto;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .option-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-container {
+        margin-left: 0;
+        justify-content: center;
+    }
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.page-link {
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #283E81;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.page-link.active {
+    background-color: #283E81;
+    color: #fff;
+    pointer-events: none;
+}
+
+.page-link:hover {
+    background-color: #f0f0f0;
+}

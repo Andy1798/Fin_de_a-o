@@ -1,0 +1,367 @@
+:root {
+    --primary: #283E81;
+    --secondary: #E0DFF2;
+    --bg-color: #3B62D9;
+    --ad-color: #718BD9;
+    --link: #F21D2F;
+}
+
+/* Estilo para el slider */
+.swiper-container {
+    width: 90%;
+    max-width: 800px; /* Limita el ancho máximo */
+    height: 40vh; /* Altura más pequeña y adaptable */
+    margin: 20px auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra sutil para mejorar el diseño */
+    background-color: #fff; /* Fondo blanco */
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    height: 100%;
+}
+
+.swiper-slide {
+    position: relative;
+    min-width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+}
+
+/* Imágenes adaptadas */
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mantiene la imagen ajustada y bien recortada */
+    border-radius: 8px;
+}
+
+/* Botón de eliminar */
+.delete-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--link);
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    opacity: 0.9;
+    z-index: 10;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    opacity: 1;
+    background-color: darkred;
+}
+
+/* Flechas de navegación */
+.swiper-button-prev,
+.swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 36px;
+    outline: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo semi-transparente */
+    transition: background 0.3s ease;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Mayor opacidad al pasar el cursor */
+}
+
+/* Paginación (bullets) */
+.swiper-pagination-bullet {
+    background: rgb(255, 255, 255);
+    opacity: 0.8;
+}
+
+.swiper-pagination-bullet-active {
+    background: #007BFF;
+    opacity: 1;
+}
+
+/* Hacer que la paginación sea más pequeña */
+.swiper-pagination {
+    bottom: 10px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+}
+
+.swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+}
+
+/* Otros estilos específicos de la página principal */
+.page-content {
+    padding: 20px;
+    background-color: #f8f8f8;
+    color: var(--primary);
+    min-height: 100vh;
+}
+
+.page-content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.page-content p {
+    line-height: 1.6;
+    color: #333;
+}
+
+h2 {
+    color: #f5f5f5;
+}
+:root {
+    --primary-color: #283E81;
+    --secondary-color: #E0DFF2;
+    --accent-color: #F21D2F;
+    --bg-color: #f4f4f9;
+    --text-color: #333;
+    --button-color: #283E81;
+    --button-hover: #1d2f63;
+}
+
+
+
+h1, h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+form input[type="file"],
+form input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+}
+
+form button {
+    background-color: var(--button-color);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: var(--button-hover);
+}
+
+.merch{
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.slide {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.slide p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.slide form button {
+    background-color: var(--accent-color);
+    font-size: 14px;
+    padding: 8px 12px;
+}
+
+.slide form button:hover {
+    background-color: darkred;
+}
+
+p {
+    text-align: center;
+    color: var(--primary-color);
+}
+.delete-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: var(--link);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%; /* Redondo */
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    opacity: 1;
+    background-color: #c82333;
+}
+
+.delete-button i {
+    font-size: 18px;
+}
+
+.delete-button:focus {
+    outline: none;
+}
+
+/* Ventana de confirmación */
+.delete-warning {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-warning .warning-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.delete-warning h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.delete-warning p {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.delete-warning .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-warning button {
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--link);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-warning button:hover {
+    background-color: darkred;
+}
+
+.delete-warning button.cancel {
+    background-color: #ccc;
+    transition: background-color 0.3s ease;
+}
+
+.delete-warning button.cancel:hover {
+    background-color: #999;
+}
+#loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

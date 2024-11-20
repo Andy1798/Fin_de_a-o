@@ -1,0 +1,179 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    font-size: 14px;
+    height: 100%;
+}
+
+/* Header horizontal */
+.top-nav {
+    display: flex;
+    align-items: center;
+    background-color: #283E81;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1001;
+}
+
+.top-nav::after { /* Línea separadora horizontal */
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #F21D2F;
+}
+
+.top-menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 30px;
+    padding: 10px 0;
+}
+
+.user-info {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 80px;
+    height: 100vh;
+    background-color: #ffffff;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    transition: width 0.3s ease;
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.2);
+    border-right: 1px solid #666;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Clase activa para expandir el sidebar */
+.sidebar.active {
+    width: 250px;
+}
+
+/* Hover solo en pantallas grandes */
+@media (min-width: 1025px) {
+    .sidebar:hover {
+        width: 250px;
+    }
+
+    .sidebar:hover .menu span {
+        display: inline;
+        margin-left: 10px;
+    }
+}
+
+/* Configuración de main-content para que no se mueva cuando el sidebar se expande */
+.main-content {
+    margin-left: 0; /* Elimina cualquier margen izquierdo */
+    padding: 80px 20px 20px; /* Ajusta el padding-top según el alto del header */
+    transition: none; /* Desactiva la transición de margen */
+    padding-left: 100px;
+}
+
+/* Menú */
+.menu {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.menu li {
+    padding: 20px 0;
+    border-top: 1px solid #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.menu a {
+    color: #283E81;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #c74a4a;
+}
+
+.menu i {
+    font-size: 24px;
+}
+
+.menu span {
+    display: none;
+}
+
+/* Botón para abrir/cerrar en dispositivos móviles */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 80px;
+        transition: width 0.3s ease;
+    }
+
+    .sidebar.active {
+        width: 250px;
+    }
+
+    .toggle-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        font-size: 20px;
+        z-index: 1002;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .menu span {
+        display: none;
+    }
+
+    .sidebar.active .menu span {
+        display: inline;
+        font-size: 16px;
+        margin-left: 10px;
+    }
+}
+
+/* Ocultar el botón en pantallas grandes */
+@media (min-width: 1025px) {
+    .toggle-btn {
+        display: none;
+    }
+}
+
+

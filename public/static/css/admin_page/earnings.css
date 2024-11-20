@@ -1,0 +1,284 @@
+/* Estilos Generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.earnings-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.earnings-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #283E81;
+    margin-bottom: 20px;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-container label {
+    font-weight: bold;
+    color: #283E81;
+    font-size: 1.1rem;
+}
+
+.filter-container input[type="text"],
+.btn-filter {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.filter-container input[type="text"] {
+    border: 1px solid #ced4da;
+    background-color: #ffffff;
+    color: #495057;
+    cursor: pointer;
+    width: 220px;
+    text-align: center;
+}
+
+.filter-container input[type="text"]:hover,
+.filter-container input[type="text"]:focus {
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+    border-color: #283E81;
+    outline: none;
+}
+
+.btn-filter {
+    background-color: #283E81;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-filter:hover {
+    background-color: #1d2f63;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo específico para el botón "Todas" */
+.btn-filter.todas {
+    background-color: #F21D2F; /* Color verde */
+}
+.btn-filter.todas:hover {
+    background-color: #c82333;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+.earnings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 8px; /* Agregar esta línea para bordes redondeados */
+    overflow: hidden; /* Importante para aplicar el radio de bordes a celdas internas */
+}
+
+.earnings-table th,
+.earnings-table td {
+    padding: 12px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.earnings-table th {
+    background-color: #283E81;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.earnings-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.earnings-table tr:hover {
+    background-color: #e6f0ff;
+}
+
+.grand-total {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+}
+
+.no-orders p {
+    text-align: center;
+    color: #333;
+    font-size: 1.2rem;
+    margin: 20px 0;
+}
+
+/* Overlay de carga */
+#loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+#loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.eye-icon i {
+    color: #3B62D9;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.eye-icon:hover i {
+    color: #224099;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .filter-container input[type="text"] {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .btn-filter {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .filter-container .btn-filter:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .earnings-table,
+    .earnings-table thead,
+    .earnings-table tbody,
+    .earnings-table th,
+    .earnings-table td,
+    .earnings-table tr {
+        display: block;
+    }
+
+    .earnings-table tr {
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: #000 solid 1px;
+    }
+
+    .earnings-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .earnings-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .earnings-table th {
+        display: none;
+    }
+}
+
+
+    .earnings-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .grand-total {
+        font-size: 1.2rem;
+    }
+
+
+@media (max-width: 480px) {
+    .filter-container {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .filter-container input[type="text"] {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+    .btn-filter {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 8px;
+    }
+
+    .filter-container .btn-filter:last-child {
+        margin-bottom: 0;
+    }
+
+    .earnings-table th,
+    .earnings-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+}
